@@ -2,12 +2,26 @@ import Speech from "speak-tts";
 import "./styles.css";
 
 export default function App() {
+  let content = `Roya and Mahsa are leaving the library.
+
+  Roya: When I came in, you were reading a book. What was it?
+  Mahsa: I was reading a book about famous Iranian scientists.
+  Roya: But such books are not very interesting.
+  
+  Mahsa: At first I had the same idea, believe me!
+  Roya: Did you find it useful?
+  Mahsa: Oh yes. Actually I learned many interesting things about our scientists’ lives.
+  Roya: Like what?
+  Mahsa: For example Razi1 taught medicine to many young people while he was working in Ray Hospital. Or Nasireddin Toosi built Maragheh Observatory when he was studying the planets.
+  
+  Roya: Cool! What was the name of the book?
+  Mahsa: Famous Iranian Scientists.`;
   const speech = new Speech();
   speech
     .init({
       volume: 1,
       lang: "en-GB",
-      rate: 0.2,
+      rate: 0.5,
       pitch: 1,
       //'voice':'Google UK English Male',
       //'splitSentences': false,
@@ -56,11 +70,26 @@ export default function App() {
       });
   };
 
+  const click_on_content = () => {
+    var s = window.getSelection();
+    s.modify("extend", "backward", "sentence");
+    var b = s.toString();
+
+    s.modify("extend", "forward", "sentence");
+    var a = s.toString();
+    s.modify("move", "forward", "sentence");
+    alert(b + a);
+  };
+
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
       <button onClick={speak}>speak</button>
+
+      <div onClick={click_on_content} style={{ whiteSpace: "pre-wrap" }}>
+        {content}
+      </div>
     </div>
   );
 }
