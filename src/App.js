@@ -1,5 +1,9 @@
 import Speech from "speak-tts";
+
+import Highlighter from "react-highlight-words";
+
 import "./styles.css";
+import { useState } from "react";
 
 export default function App() {
   let content = `Roya and Mahsa are leaving the library.
@@ -17,6 +21,8 @@ export default function App() {
   Roya: Cool! What was the name of the book?
   Mahsa: Famous Iranian Scientists.`;
   const speech = new Speech();
+  const [selected, setSelected] = useState("");
+
   speech
     .init({
       volume: 1,
@@ -37,10 +43,10 @@ export default function App() {
     .catch((e) => {
       console.error("An error occured while initializing : ", e);
     });
-  const speak = () => {
+  const speak = (text) => {
     speech
       .speak({
-        text: "An error occured while initializing",
+        text: text,
         queue: false,
         listeners: {
           onstart: () => {
@@ -78,18 +84,24 @@ export default function App() {
     s.modify("extend", "forward", "sentence");
     var a = s.toString();
     s.modify("move", "forward", "sentence");
-    alert(b + a);
+    let res = b + a;
+    speak(res);
+    setSelected(res);
   };
 
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
-      <button onClick={speak}>speak</button>
 
-      <div onClick={click_on_content} style={{ whiteSpace: "pre-wrap" }}>
-        {content}
-      </div>
+      <Highlighter
+        highlightClassName="YourHighlightClass"
+        searchWords={[selected]}
+        autoEscape={true}
+        textToHighlight={content}
+        onClick={click_on_content}
+        style={{ whiteSpace: "pre-wrap" }}
+      />
     </div>
   );
 }
