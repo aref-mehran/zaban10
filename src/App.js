@@ -27,7 +27,7 @@ export default function App() {
     .init({
       volume: 1,
       lang: "en-GB",
-      rate: 0.5,
+      rate: 0.8,
       pitch: 1,
       //'voice':'Google UK English Male',
       //'splitSentences': false,
@@ -76,7 +76,7 @@ export default function App() {
       });
   };
 
-  const click_on_content = () => {
+  const click_on_sentence = () => {
     var s = window.getSelection();
     s.modify("extend", "backward", "sentence");
     var b = s.toString();
@@ -89,17 +89,28 @@ export default function App() {
     setSelected(res);
   };
 
+  const click_on_word = () => {
+    var s = window.getSelection();
+    s.modify("extend", "backward", "word");
+    var b = s.toString();
+
+    s.modify("extend", "forward", "word");
+    var a = s.toString();
+    s.modify("move", "forward", "character");
+
+    let res = b + a;
+    speak(res);
+    setSelected(res);
+  };
+
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-
       <Highlighter
         highlightClassName="YourHighlightClass"
         searchWords={[selected]}
         autoEscape={true}
         textToHighlight={content}
-        onClick={click_on_content}
+        onClick={click_on_word}
         style={{ whiteSpace: "pre-wrap" }}
       />
     </div>
