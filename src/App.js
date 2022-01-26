@@ -20,6 +20,22 @@ export default function App() {
   
   Roya: Cool! What was the name of the book?
   Mahsa: Famous Iranian Scientists.`;
+
+  let content_fa = `رویا و مهسا در حال ترک کتابخانه هستند.
+
+  رویا: وقتی اومدم تو داشتی کتاب میخونی. چی بود؟
+  مهسا: داشتم کتابی درباره دانشمندان مشهور ایرانی می خواندم.
+  رویا: اما چنین کتاب هایی زیاد جالب نیستند.
+  
+  مهسا: اولش منم همین فکرو داشتم باور کن!
+  رویا: به نظرت مفید بود؟
+  مهسا: اوه بله. در واقع من چیزهای جالب زیادی در مورد زندگی دانشمندانمان یاد گرفتم.
+  رویا: مثلا چی؟
+  مهسا: به عنوان مثال رازی1 زمانی که در بیمارستان ری کار می کرد به بسیاری از جوانان پزشکی آموزش می داد. یا نصیرالدین طوسی رصدخانه مراغه را زمانی که در حال مطالعه سیارات بود ساخته است.
+  
+  رویا: باحال! اسم کتاب چی بود؟
+  مهسا: دانشمندان مشهور ایرانی.`;
+
   const speech = new Speech();
   const [selected, setSelected] = useState("");
 
@@ -85,8 +101,18 @@ export default function App() {
     var a = s.toString();
     s.modify("move", "forward", "sentence");
     let res = b + a;
+    res = res.trim();
     speak(res);
     setSelected(res);
+
+    let arr_en = content.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+    let arr_fa = content_fa.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+
+    let index = arr_en.indexOf(res);
+    console.log("fffff ", arr_fa);
+    if (index != -1) {
+      // alert(arr_fa);
+    }
   };
 
   const click_on_word = () => {
@@ -110,7 +136,7 @@ export default function App() {
         searchWords={[selected]}
         autoEscape={true}
         textToHighlight={content}
-        onClick={click_on_word}
+        onClick={click_on_sentence}
         style={{ whiteSpace: "pre-wrap" }}
       />
     </div>
