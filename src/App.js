@@ -44,7 +44,7 @@ export default function App() {
     .init({
       volume: 1,
       lang: "en-GB",
-      rate: 0.8,
+      rate: 0.5,
       pitch: 1,
       //'voice':'Google UK English Male',
       //'splitSentences': false,
@@ -138,6 +138,8 @@ export default function App() {
         onClick={click_on_sentence}
         style={{ whiteSpace: "pre-wrap" }}
       />
+
+      <div>{selected_fa}</div>
     </div>
   );
 }
