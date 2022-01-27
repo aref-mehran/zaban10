@@ -23,21 +23,22 @@ export default function App() {
 
   let content_fa = `رویا و مهسا در حال ترک کتابخانه هستند.
 
-  رویا: وقتی اومدم تو داشتی کتاب میخونی. چی بود؟
+  رویا: وقتی اومدم تو داشتی کتاب میخونی. چی بود؟.
   مهسا: داشتم کتابی درباره دانشمندان مشهور ایرانی می خواندم.
   رویا: اما چنین کتاب هایی زیاد جالب نیستند.
   
   مهسا: اولش منم همین فکرو داشتم باور کن!
-  رویا: به نظرت مفید بود؟
+  رویا: به نظرت مفید بود؟.
   مهسا: اوه بله. در واقع من چیزهای جالب زیادی در مورد زندگی دانشمندانمان یاد گرفتم.
-  رویا: مثلا چی؟
+  رویا: مثلا چی؟.
   مهسا: به عنوان مثال رازی1 زمانی که در بیمارستان ری کار می کرد به بسیاری از جوانان پزشکی آموزش می داد. یا نصیرالدین طوسی رصدخانه مراغه را زمانی که در حال مطالعه سیارات بود ساخته است.
   
-  رویا: باحال! اسم کتاب چی بود؟
+  رویا: باحال! اسم کتاب چی بود؟.
   مهسا: دانشمندان مشهور ایرانی.`;
 
   const speech = new Speech();
   const [selected, setSelected] = useState("");
+  const [selected_fa, setSelected_fa] = useState("");
 
   speech
     .init({
@@ -49,15 +50,15 @@ export default function App() {
       //'splitSentences': false,
       listeners: {
         onvoiceschanged: (voices) => {
-          console.log("Voices changed", voices);
+          // console.log("Voices changed", voices);
         }
       }
     })
     .then((data) => {
-      console.log("Speech is ready", data);
+      // console.log("Speech is ready", data);
     })
     .catch((e) => {
-      console.error("An error occured while initializing : ", e);
+      // console.error("An error occured while initializing : ", e);
     });
   const speak = (text) => {
     speech
@@ -66,29 +67,29 @@ export default function App() {
         queue: false,
         listeners: {
           onstart: () => {
-            console.log("Start utterance");
+            // console.log("Start utterance");
           },
           onend: () => {
-            console.log("End utterance");
+            // console.log("End utterance");
           },
           onresume: () => {
-            console.log("Resume utterance");
+            // console.log("Resume utterance");
           },
           onboundary: (event) => {
-            console.log(
-              event.name +
-                " boundary reached after " +
-                event.elapsedTime +
-                " milliseconds."
-            );
+            // console.log(
+            //   event.name +
+            //     " boundary reached after " +
+            //     event.elapsedTime +
+            //     " milliseconds."
+            // );
           }
         }
       })
       .then((data) => {
-        console.log("Success !", data);
+        // console.log("Success !", data);
       })
       .catch((e) => {
-        console.error("An error occurred :", e);
+        // console.error("An error occurred :", e);
       });
   };
 
@@ -106,13 +107,11 @@ export default function App() {
     setSelected(res);
 
     let arr_en = content.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
-    let arr_fa = content_fa.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+    let arr_fa = content_fa.replace(/([.?!])\s*(?=)/g, "$1|").split("|");
 
     let index = arr_en.indexOf(res);
-    console.log("fffff ", arr_fa);
-    if (index != -1) {
-      // alert(arr_fa);
-    }
+    let selected_fa = arr_fa[index];
+    setSelected_fa(selected_fa);
   };
 
   const click_on_word = () => {
