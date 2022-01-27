@@ -1,9 +1,35 @@
 import Speech from "speak-tts";
+import {
+  IonContent,
+  IonHeader,
+  IonFooter,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonFabList
+} from "@ionic/react";
+import {
+  add,
+  settings,
+  share,
+  person,
+  arrowForwardCircle,
+  arrowBackCircle,
+  arrowUpCircle,
+  logoVimeo,
+  logoFacebook,
+  logoInstagram,
+  logoTwitter
+} from "ionicons/icons";
 
 import Highlighter from "react-highlight-words";
 
 import "./styles.css";
 import { useState } from "react";
+import eng_fa from "./eng_fa";
 
 export default function App() {
   let content = `Roya and Mahsa are leaving the library.
@@ -39,6 +65,7 @@ export default function App() {
   const speech = new Speech();
   const [selected, setSelected] = useState("");
   const [selected_fa, setSelected_fa] = useState("");
+  const [mode, setMode] = useState("sentence");
 
   speech
     .init({
@@ -125,7 +152,13 @@ export default function App() {
 
     let res = b + a;
     speak(res);
+    res = res.trim();
+
     setSelected(res);
+
+    let selected_fa = eng_fa[res.toLowerCase()];
+    setSelected_fa(JSON.stringify(selected_fa));
+    console.log(selected_fa);
   };
 
   return (
@@ -135,7 +168,7 @@ export default function App() {
         searchWords={[selected]}
         autoEscape={true}
         textToHighlight={content}
-        onClick={click_on_sentence}
+        onClick={click_on_word}
         style={{ whiteSpace: "pre-wrap" }}
       />
 
