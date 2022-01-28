@@ -168,11 +168,18 @@ export default function App() {
         searchWords={[selected]}
         autoEscape={true}
         textToHighlight={content}
-        onClick={click_on_word}
+        onClick={click_on_sentence}
         style={{ whiteSpace: "pre-wrap" }}
       />
 
-      <div>{selected_fa}</div>
+      <div
+        style={{
+          color: "green",
+          fontWeight: "bold"
+        }}
+      >
+        {selected_fa}
+      </div>
     </div>
   );
 }
