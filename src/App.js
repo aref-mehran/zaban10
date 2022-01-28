@@ -171,7 +171,8 @@ export default function App() {
         onClick={click_on_sentence}
         style={{ whiteSpace: "pre-wrap" }}
       />
-
+      <br />
+      <br />
       <div
         style={{
           color: "green",
