@@ -8,24 +8,27 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const LessonList = () => {
+const SectionList = () => {
   const gSate = useSelector((state) => state);
-  const dispatch = useDispatch();
+
+  let location = useLocation();
+
+  const sections = location.state.sections;
 
   return (
     <List>
-      {gSate.lessons.map((lesson, idx) => {
+      {sections.map((section, idx) => {
         return (
           <>
             {/* <Divider variant="inset" component="li" /> */}
             <ListItem alignItems="flex-start">
-              <Link to="/sections" state={lesson}>
+              <Link to="/section/" state={section}>
                 <ListItemAvatar>
                   <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
                 </ListItemAvatar>
-                <ListItemText primary={lesson.title} />
+                <ListItemText primary={section.title} />
               </Link>
             </ListItem>
           </>
@@ -34,4 +37,4 @@ const LessonList = () => {
     </List>
   );
 };
-export default LessonList;
+export default SectionList;

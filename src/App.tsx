@@ -12,14 +12,15 @@ import { Link } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LessonSection from "./Components/LessonSection";
 import LessonList from "./Components/LessonList";
+import SectionList from "./Components/SectionList";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/list" element={<LessonList />} />
-        <Route path="/section/:lesson_id" element={<LessonSection />} />
-        <Route path="/schedule" element={LessonSection} />
+        <Route path="/sections" element={<SectionList />} />
+        <Route path="/section" element={<LessonSection />} />
       </Routes>
 
       <Paper
@@ -35,7 +36,7 @@ export default function App() {
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
           </Link>
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <Link to="/hh">
+          <Link to="/sections">
             <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
           </Link>
         </BottomNavigation>

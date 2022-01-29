@@ -13,17 +13,13 @@ import Grid from "@mui/material/Grid";
 
 import "../styles.css";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const LessonSection = () => {
-  let params = useParams();
-  const gSate = useSelector((state) => state);
-  const dispatch = useDispatch();
+  let location = useLocation();
 
-  const content = gSate.lessons[Number(params.lesson_id)].sections[0].content;
-  const content_fa =
-    gSate.lessons[Number(params.lesson_id)].sections[0].content_fa;
-  console.log(params, gSate);
+  const content = location.state.content;
+  const content_fa = location.state.content_fa;
 
   const speech = new Speech();
   const [selected, setSelected] = useState("");
