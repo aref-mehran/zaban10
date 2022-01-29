@@ -168,7 +168,7 @@ export default function App() {
         <br />
         <br />
 
-        <div style={{ overflow: "auto", height: "70vh" }}>
+        <div style={{ overflow: "auto", height: "60vh" }}>
           <Highlighter
             highlightClassName="YourHighlightClass"
             searchWords={[selected]}
