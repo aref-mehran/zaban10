@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const LessonList = () => {
   const gSate = useSelector((state) => state);
@@ -15,15 +16,17 @@ const LessonList = () => {
 
   return (
     <List>
-      {gSate.lessons.map((lesson) => {
+      {gSate.lessons.map((lesson, idx) => {
         return (
           <>
             {/* <Divider variant="inset" component="li" /> */}
             <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              </ListItemAvatar>
-              <ListItemText primary={lesson.title} />
+              <Link to={"/section/" + idx}>
+                <ListItemAvatar>
+                  <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                </ListItemAvatar>
+                <ListItemText primary={lesson.title} />
+              </Link>
             </ListItem>
           </>
         );

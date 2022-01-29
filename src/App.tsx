@@ -18,7 +18,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/list" element={<LessonList />} />
-        <Route path="/section" element={<LessonSection />} />
+        <Route path="/section/:lesson_id" element={<LessonSection />} />
         <Route path="/schedule" element={LessonSection} />
       </Routes>
 
@@ -34,9 +34,7 @@ export default function App() {
           <Link to="/list">
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
           </Link>
-          <Link to="/section">
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          </Link>
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <Link to="/hh">
             <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
           </Link>
