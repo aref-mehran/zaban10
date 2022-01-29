@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import "./styles.css";
 import { useState } from "react";
 
-export default function LessonSection() {
+const LessonSection = () => {
   let content = `Roya and Mahsa are leaving the library.
 
   Roya: When I came in, you were reading a book. What was it?
@@ -213,4 +213,5 @@ export default function LessonSection() {
       </Grid>
     </div>
   );
-}
+};
+export default LessonSection;
