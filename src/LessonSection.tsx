@@ -5,23 +5,14 @@ import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import NativeSelect from "@mui/material/NativeSelect";
 
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArchiveIcon from "@mui/icons-material/Archive";
-
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
 import "./styles.css";
 import { useState } from "react";
 
-export default function App() {
+export default function LessonSection() {
   let content = `Roya and Mahsa are leaving the library.
 
   Roya: When I came in, you were reading a book. What was it?
@@ -156,85 +147,70 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <Paper
-        sx={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0
+    <div className="LessonSection">
+      <br />
+      <br />
+
+      <div style={{ overflow: "auto", height: "60vh" }}>
+        <Highlighter
+          highlightClassName="YourHighlightClass"
+          searchWords={[selected]}
+          autoEscape={true}
+          textToHighlight={content}
+          onClick={clicked}
+          style={{ whiteSpace: "pre-wrap" }}
+        />
+        <br />
+      </div>
+
+      <br />
+      <div
+        style={{
+          color: "green",
+          fontWeight: "bold"
         }}
       >
-        <br />
-        <br />
+        {selected_fa}
+      </div>
 
-        <div style={{ overflow: "auto", height: "60vh" }}>
-          <Highlighter
-            highlightClassName="YourHighlightClass"
-            searchWords={[selected]}
-            autoEscape={true}
-            textToHighlight={content}
-            onClick={clicked}
-            style={{ whiteSpace: "pre-wrap" }}
+      <Grid container style={{ height: "20vh" }}>
+        <Grid item xs={8}>
+          <Typography variant="h6" id="rate-slider" gutterBottom>
+            سرعت پخش
+          </Typography>
+
+          <Slider
+            aria-label="rate-slider"
+            defaultValue={rate}
+            valueLabelDisplay="auto"
+            step={10}
+            marks
+            min={10}
+            max={100}
+            onChange={(e, newValue) => {
+              setRate(newValue / 100);
+            }}
+            style={{ width: "80%" }}
           />
-          <br />
-        </div>
-
-        <br />
-        <div
-          style={{
-            color: "green",
-            fontWeight: "bold"
-          }}
-        >
-          {selected_fa}
-        </div>
-
-        <Grid container style={{ height: "20vh" }}>
-          <Grid item xs={8}>
-            <Typography variant="h6" id="rate-slider" gutterBottom>
-              سرعت پخش
-            </Typography>
-
-            <Slider
-              aria-label="rate-slider"
-              defaultValue={rate}
-              valueLabelDisplay="auto"
-              step={10}
-              marks
-              min={10}
-              max={100}
-              onChange={(e, newValue) => {
-                setRate(newValue / 100);
-              }}
-              style={{ width: "80%" }}
-            />
-          </Grid>
-
-          <Grid item xs={4}>
-            <InputLabel id="demo-simple-select-standard-label">
-              حالت تلفظ
-            </InputLabel>
-            <NativeSelect
-              labelId="demo-simple-select-standard-label"
-              id="demo-simple-select-standard"
-              value={mode}
-              onChange={(e) => {
-                setMode(Number(e.target.value));
-              }}
-            >
-              <option value={1}>تلفظ جمله</option>
-              <option value={2}>تلفظ کلمه</option>
-            </NativeSelect>
-          </Grid>
         </Grid>
 
-        <BottomNavigation showLabels>
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-        </BottomNavigation>
-      </Paper>
+        <Grid item xs={4}>
+          <InputLabel id="demo-simple-select-standard-label">
+            حالت تلفظ
+          </InputLabel>
+          <NativeSelect
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            value={mode}
+            onChange={(e) => {
+              setMode(Number(e.target.value));
+            }}
+          >
+            <option value={1}>تلفظ جمله</option>
+            <option value={2}>تلفظ کلمه</option>
+          </NativeSelect>
+        </Grid>
+      </Grid>
     </div>
   );
 }
