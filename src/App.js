@@ -6,7 +6,7 @@ import Slider from "@mui/material/Slider";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import NativeSelect from "@mui/material/NativeSelect";
 
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -16,7 +16,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ArchiveIcon from "@mui/icons-material/Archive";
 
 import Paper from "@mui/material/Paper";
-import List from "@mui/material/List";
+import Grid from "@mui/material/Grid";
 
 import "./styles.css";
 import { useState } from "react";
@@ -168,7 +168,7 @@ export default function App() {
         <br />
         <br />
 
-        <div style={{ overflow: "auto", height: "80vh" }}>
+        <div style={{ overflow: "auto", height: "70vh" }}>
           <Highlighter
             highlightClassName="YourHighlightClass"
             searchWords={[selected]}
@@ -178,51 +178,56 @@ export default function App() {
             style={{ whiteSpace: "pre-wrap" }}
           />
           <br />
-          <br />
-          <div
-            style={{
-              color: "green",
-              fontWeight: "bold"
-            }}
-          >
-            {selected_fa}
-          </div>
-
-          <br />
-
-          <InputLabel id="demo-simple-select-standard-label">
-            حالت تلفظ
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            value={mode}
-            onChange={(e) => {
-              setMode(e.target.value);
-            }}
-          >
-            <MenuItem value={1}>تلفظ جمله</MenuItem>
-            <MenuItem value={2}>تلفظ کلمه</MenuItem>
-          </Select>
-
-          <Typography variant="h6" id="rate-slider" gutterBottom>
-            سرعت پخش
-          </Typography>
-
-          <Slider
-            aria-label="rate-slider"
-            defaultValue={rate}
-            valueLabelDisplay="auto"
-            step={10}
-            marks
-            min={10}
-            max={100}
-            onChange={(e, newValue) => {
-              setRate(newValue / 100);
-            }}
-            style={{ width: "80%" }}
-          />
         </div>
+
+        <br />
+        <div
+          style={{
+            color: "green",
+            fontWeight: "bold"
+          }}
+        >
+          {selected_fa}
+        </div>
+
+        <Grid container style={{ height: "20vh" }}>
+          <Grid item xs={8}>
+            <Typography variant="h6" id="rate-slider" gutterBottom>
+              سرعت پخش
+            </Typography>
+
+            <Slider
+              aria-label="rate-slider"
+              defaultValue={rate}
+              valueLabelDisplay="auto"
+              step={10}
+              marks
+              min={10}
+              max={100}
+              onChange={(e, newValue) => {
+                setRate(newValue / 100);
+              }}
+              style={{ width: "80%" }}
+            />
+          </Grid>
+
+          <Grid item xs={4}>
+            <InputLabel id="demo-simple-select-standard-label">
+              حالت تلفظ
+            </InputLabel>
+            <NativeSelect
+              labelId="demo-simple-select-standard-label"
+              id="demo-simple-select-standard"
+              value={mode}
+              onChange={(e) => {
+                setMode(e.target.value);
+              }}
+            >
+              <option value={1}>تلفظ جمله</option>
+              <option value={2}>تلفظ کلمه</option>
+            </NativeSelect>
+          </Grid>
+        </Grid>
 
         <BottomNavigation showLabels>
           <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
