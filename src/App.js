@@ -8,6 +8,16 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ArchiveIcon from "@mui/icons-material/Archive";
+
+import Paper from "@mui/material/Paper";
+import List from "@mui/material/List";
+
 import "./styles.css";
 import { useState } from "react";
 
@@ -147,56 +157,79 @@ export default function App() {
 
   return (
     <div className="App">
-      <Highlighter
-        highlightClassName="YourHighlightClass"
-        searchWords={[selected]}
-        autoEscape={true}
-        textToHighlight={content}
-        onClick={clicked}
-        style={{ whiteSpace: "pre-wrap" }}
-      />
-      <br />
-      <br />
-      <div
-        style={{
-          color: "green",
-          fontWeight: "bold"
+      <Paper
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0
         }}
       >
-        {selected_fa}
-      </div>
+        <br />
+        <br />
 
-      <br />
+        <div style={{ overflow: "auto", height: "80vh" }}>
+          <Highlighter
+            highlightClassName="YourHighlightClass"
+            searchWords={[selected]}
+            autoEscape={true}
+            textToHighlight={content}
+            onClick={clicked}
+            style={{ whiteSpace: "pre-wrap" }}
+          />
+          <br />
+          <br />
+          <div
+            style={{
+              color: "green",
+              fontWeight: "bold"
+            }}
+          >
+            {selected_fa}
+          </div>
 
-      <InputLabel id="demo-simple-select-standard-label">حالت تلفظ</InputLabel>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        value={mode}
-        onChange={(e) => {
-          setMode(e.target.value);
-        }}
-      >
-        <MenuItem value={1}>تلفظ جمله</MenuItem>
-        <MenuItem value={2}>تلفظ کلمه</MenuItem>
-      </Select>
+          <br />
 
-      <Typography variant="h6" id="rate-slider" gutterBottom>
-        سرعت پخش
-      </Typography>
-      <Slider
-        aria-label="rate-slider"
-        defaultValue={rate}
-        valueLabelDisplay="auto"
-        step={10}
-        marks
-        min={10}
-        max={100}
-        onChange={(e, newValue) => {
-          setRate(newValue / 100);
-        }}
-        style={{ width: "80%" }}
-      />
+          <InputLabel id="demo-simple-select-standard-label">
+            حالت تلفظ
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            value={mode}
+            onChange={(e) => {
+              setMode(e.target.value);
+            }}
+          >
+            <MenuItem value={1}>تلفظ جمله</MenuItem>
+            <MenuItem value={2}>تلفظ کلمه</MenuItem>
+          </Select>
+
+          <Typography variant="h6" id="rate-slider" gutterBottom>
+            سرعت پخش
+          </Typography>
+
+          <Slider
+            aria-label="rate-slider"
+            defaultValue={rate}
+            valueLabelDisplay="auto"
+            step={10}
+            marks
+            min={10}
+            max={100}
+            onChange={(e, newValue) => {
+              setRate(newValue / 100);
+            }}
+            style={{ width: "80%" }}
+          />
+        </div>
+
+        <BottomNavigation showLabels>
+          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+        </BottomNavigation>
+      </Paper>
     </div>
   );
 }
