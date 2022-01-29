@@ -11,15 +11,19 @@ import NativeSelect from "@mui/material/NativeSelect";
 
 import Grid from "@mui/material/Grid";
 
+import ReactPDF from "@intelllex/react-pdf";
+
 import "../styles.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import pdfUrl from "../assets/zaban10-lesson3.pdf";
+
 const LessonSection = () => {
   let location = useLocation();
 
-  const content = location.state.content;
-  const content_fa = location.state.content_fa;
+  // const content = location.state.content;
+  // const content_fa = location.state.content_fa;
 
   const speech = new Speech();
   const [selected, setSelected] = useState("");
@@ -94,12 +98,12 @@ const LessonSection = () => {
     speak(res);
     setSelected(res);
 
-    let arr_en = content.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
-    let arr_fa = content_fa.replace(/([.?!])\s*(?=)/g, "$1|").split("|");
+    // let arr_en = content.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+    // let arr_fa = content_fa.replace(/([.?!])\s*(?=)/g, "$1|").split("|");
 
-    let index = arr_en.indexOf(res);
-    let selected_fa = arr_fa[index];
-    setSelected_fa(selected_fa);
+    // let index = arr_en.indexOf(res);
+    // let selected_fa = arr_fa[index];
+    // setSelected_fa(selected_fa);
   };
 
   const click_on_word = () => {
@@ -123,21 +127,16 @@ const LessonSection = () => {
       click_on_word();
     }
   };
-
   return (
     <div className="LessonSection">
       <br />
       <br />
 
       <div style={{ overflow: "auto", height: "60vh" }}>
-        <Highlighter
-          highlightClassName="YourHighlightClass"
-          searchWords={[selected]}
-          autoEscape={true}
-          textToHighlight={content}
-          onClick={clicked}
-          style={{ whiteSpace: "pre-wrap" }}
-        />
+        <div onClick={clicked}>
+          <ReactPDF url={pdfUrl} showProgressBar showToolbox />
+        </div>
+
         <br />
       </div>
 
