@@ -3,9 +3,13 @@ import Speech from "speak-tts";
 import Highlighter from "react-highlight-words";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
+
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+
 import "./styles.css";
 import { useState } from "react";
-import eng_fa from "./eng_fa";
 
 export default function App() {
   let content = `Roya and Mahsa are leaving the library.
@@ -43,7 +47,7 @@ export default function App() {
   const [selected_fa, setSelected_fa] = useState("");
   const [rate, setRate] = useState(0.5);
 
-  const [mode, setMode] = useState("sentence");
+  const [mode, setMode] = useState(1);
 
   speech
     .init({
@@ -130,13 +134,15 @@ export default function App() {
 
     let res = b + a;
     speak(res);
-    res = res.trim();
-
     setSelected(res);
+  };
 
-    let selected_fa = eng_fa[res.toLowerCase()];
-    setSelected_fa(JSON.stringify(selected_fa));
-    console.log(selected_fa);
+  const clicked = () => {
+    if (mode === 1) {
+      click_on_sentence();
+    } else {
+      click_on_word();
+    }
   };
 
   return (
@@ -146,7 +152,7 @@ export default function App() {
         searchWords={[selected]}
         autoEscape={true}
         textToHighlight={content}
-        onClick={click_on_sentence}
+        onClick={clicked}
         style={{ whiteSpace: "pre-wrap" }}
       />
       <br />
@@ -161,6 +167,20 @@ export default function App() {
       </div>
 
       <br />
+
+      <InputLabel id="demo-simple-select-standard-label">حالت تلفظ</InputLabel>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={mode}
+        onChange={(e) => {
+          setMode(e.target.value);
+        }}
+      >
+        <MenuItem value={1}>تلفظ جمله</MenuItem>
+        <MenuItem value={2}>تلفظ کلمه</MenuItem>
+      </Select>
+
       <Typography variant="h6" id="rate-slider" gutterBottom>
         سرعت پخش
       </Typography>
