@@ -1,32 +1,8 @@
 import Speech from "speak-tts";
-import {
-  IonContent,
-  IonHeader,
-  IonFooter,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonFab,
-  IonFabButton,
-  IonIcon,
-  IonFabList
-} from "@ionic/react";
-import {
-  add,
-  settings,
-  share,
-  person,
-  arrowForwardCircle,
-  arrowBackCircle,
-  arrowUpCircle,
-  logoVimeo,
-  logoFacebook,
-  logoInstagram,
-  logoTwitter
-} from "ionicons/icons";
 
 import Highlighter from "react-highlight-words";
-
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
 import "./styles.css";
 import { useState } from "react";
 import eng_fa from "./eng_fa";
@@ -65,13 +41,15 @@ export default function App() {
   const speech = new Speech();
   const [selected, setSelected] = useState("");
   const [selected_fa, setSelected_fa] = useState("");
+  const [rate, setRate] = useState(0.5);
+
   const [mode, setMode] = useState("sentence");
 
   speech
     .init({
       volume: 1,
       lang: "en-GB",
-      rate: 0.5,
+      rate: rate,
       pitch: 1,
       //'voice':'Google UK English Male',
       //'splitSentences': false,
@@ -181,6 +159,24 @@ export default function App() {
       >
         {selected_fa}
       </div>
+
+      <br />
+      <Typography variant="h6" id="rate-slider" gutterBottom>
+        سرعت پخش
+      </Typography>
+      <Slider
+        aria-label="rate-slider"
+        defaultValue={rate}
+        valueLabelDisplay="auto"
+        step={10}
+        marks
+        min={10}
+        max={100}
+        onChange={(e, newValue) => {
+          setRate(newValue / 100);
+        }}
+        style={{ width: "80%" }}
+      />
     </div>
   );
 }
