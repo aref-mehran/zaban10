@@ -9,7 +9,7 @@ import NativeSelect from "@mui/material/NativeSelect";
 
 import Grid from "@mui/material/Grid";
 
-import "./styles.css";
+import "../styles.css";
 import { useState } from "react";
 
 const LessonSection = () => {

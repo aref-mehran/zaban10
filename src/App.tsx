@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from "react-redux";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
@@ -10,16 +9,19 @@ import Paper from "@mui/material/Paper";
 
 import { Link } from "react-router-dom";
 
-import { BrowserRouter } from "react-router-dom";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LessonSection from "./Components/LessonSection";
+import LessonList from "./Components/LessonList";
 
-import LessonSection from "./LessonSection";
 export default function App() {
-  const gSate = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   return (
     <BrowserRouter>
+      <Routes>
+        <Route exact path="/list" element={<LessonList />} />
+        <Route path="/section" element={<LessonSection />} />
+        <Route path="/schedule" element={LessonSection} />
+      </Routes>
+
       <Paper
         sx={{
           position: "fixed",
@@ -28,14 +30,8 @@ export default function App() {
           right: 0
         }}
       >
-        <Switch>
-          <Route exact path="/s" component={LessonSection} />
-          <Route path="/section" component={LessonSection} />
-          <Route path="/schedule" component={LessonSection} />
-        </Switch>
-
         <BottomNavigation showLabels>
-          <Link to="/salam">
+          <Link to="/list">
             <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
           </Link>
           <Link to="/section">
