@@ -220,7 +220,7 @@ export default function App() {
               id="demo-simple-select-standard"
               value={mode}
               onChange={(e) => {
-                setMode(e.target.value);
+                setMode(Number(e.target.value));
               }}
             >
               <option value={1}>تلفظ جمله</option>
