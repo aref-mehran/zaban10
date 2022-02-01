@@ -110,14 +110,11 @@ const LessonSection = () => {
 
   const click_on_word = () => {
     var s = window.getSelection();
-    s.modify("extend", "backward", "word");
-    var b = s.toString();
-
+    s.modify("move", "backward", "word");
     s.modify("extend", "forward", "word");
     var a = s.toString();
-    s.modify("move", "forward", "character");
 
-    let res = b + a;
+    let res = a;
     speak(res);
     setSelected(res);
   };
@@ -136,7 +133,7 @@ const LessonSection = () => {
 
       <div style={{ height: "70vh", position: "relative" }}>
         <div onClick={clicked}>
-          <ReactPDF url={pdfUrl} showProgressBar />
+          <ReactPDF url={pdfUrl} showProgressBar showToolbox />
         </div>
 
         <br />
