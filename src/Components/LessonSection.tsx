@@ -163,7 +163,7 @@ const LessonSection = () => {
 
           <Slider
             aria-label="rate-slider"
-            defaultValue={rate}
+            defaultValue={rate * 100}
             valueLabelDisplay="auto"
             step={10}
             marks
