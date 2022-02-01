@@ -31,9 +31,9 @@ const LessonSection = () => {
   const [rate, setRate] = useState(0.5);
 
   const [mode, setMode] = useState(1);
-  const firstOfflineVoice = (s = speechSynthesis.getVoices().filter((el) => {
+  const firstOfflineVoice = speechSynthesis.getVoices().filter((el) => {
     return el.localService == true;
-  })[0].name);
+  })[0]?.name;
 
   speech
     .init({
@@ -137,9 +137,9 @@ const LessonSection = () => {
       <br />
       <br />
 
-      <div style={{ overflow: "auto", height: "60vh" }}>
+      <div style={{ height: "70vh", position: "relative" }}>
         <div onClick={clicked}>
-          <ReactPDF url={pdfUrl} showProgressBar showToolbox />
+          <ReactPDF url={pdfUrl} showProgressBar />
         </div>
 
         <br />
@@ -155,7 +155,7 @@ const LessonSection = () => {
         {selected_fa}
       </div>
 
-      <Grid container style={{ height: "20vh" }}>
+      <Grid container style={{ marginLeft: "10%", height: "10vh" }}>
         <Grid item xs={8}>
           <Typography variant="h6" id="rate-slider" gutterBottom>
             سرعت پخش
