@@ -90,15 +90,12 @@ const LessonSection = () => {
 
   const click_on_sentence = () => {
     var s = window.getSelection();
-    s.modify("extend", "backward", "sentence");
-    var b = s.toString();
 
+    s.modify("move", "backward", "sentence");
     s.modify("extend", "forward", "sentence");
     var a = s.toString();
-    // s.modify("move", "backward", "sentence");
-    s.modify("move", "forward", "sentence");
 
-    let res = b + a;
+    let res = a;
     res = res.trim();
     speak(res);
     setSelected(res);
