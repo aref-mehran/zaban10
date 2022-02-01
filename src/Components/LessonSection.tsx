@@ -31,6 +31,9 @@ const LessonSection = () => {
   const [rate, setRate] = useState(0.5);
 
   const [mode, setMode] = useState(1);
+  const firstOfflineVoice = (s = speechSynthesis.getVoices().filter((el) => {
+    return el.localService == true;
+  })[0].name);
 
   speech
     .init({
@@ -38,7 +41,7 @@ const LessonSection = () => {
       lang: "en-GB",
       rate: rate,
       pitch: 1,
-      //'voice':'Google UK English Male',
+      voice: firstOfflineVoice,
       //'splitSentences': false,
       listeners: {
         onvoiceschanged: (voices) => {
