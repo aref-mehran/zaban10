@@ -92,7 +92,9 @@ const LessonSection = () => {
 
     s.modify("extend", "forward", "sentence");
     var a = s.toString();
+    // s.modify("move", "backward", "sentence");
     s.modify("move", "forward", "sentence");
+
     let res = b + a;
     res = res.trim();
     speak(res);
