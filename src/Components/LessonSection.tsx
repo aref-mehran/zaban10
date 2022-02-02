@@ -92,8 +92,8 @@ const LessonSection = () => {
   const click_on_sentence = () => {
     var s = window.getSelection();
 
-    s.modify("move", "backward", "sentence");
-    s.modify("extend", "forward", "sentence");
+    s.modify("move", "backward", "lineboundary");
+    s.modify("extend", "forward", "lineboundary");
     var a = s.toString();
 
     let res = a;

@@ -64,7 +64,7 @@ const PdfScroll = (props) => {
             ? allPageNumbers.map((pn) => (
                 <Page
                   key={`page-${pn}`}
-                  width={outerWidth - CONTAINER_PADDING * 2}
+                  width={window.outerWidth}
                   pageNumber={pn}
                 /> // 'width' is just for fun.
               ))
