@@ -3,3 +3,13 @@
   font-family: sans-serif;
   text-align: center;
 }
+::-moz-selection {
+  /* Code for Firefox */
+  background: black;
+  color: yellow;
+}
+
+::selection {
+  background: black;
+  color: yellow;
+}

@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Speech from "speak-tts";
 
-import Highlighter from "react-highlight-words";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 
@@ -11,9 +10,10 @@ import NativeSelect from "@mui/material/NativeSelect";
 
 import Grid from "@mui/material/Grid";
 
-import ReactPDF from "@intelllex/react-pdf";
-
 import "../styles.css";
+
+import PdfScroll from "./PdfScroll";
+
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -31,6 +31,7 @@ const LessonSection = () => {
   const [rate, setRate] = useState(0.5);
 
   const [mode, setMode] = useState(1);
+
   const firstOfflineVoice = speechSynthesis.getVoices().filter((el) => {
     return el.localService == true;
   })[0]?.name;
@@ -131,12 +132,13 @@ const LessonSection = () => {
       <br />
       <br />
 
-      <div style={{ height: "70vh", position: "relative" }}>
+      <div style={{ height: "70vh", width: "100vh", position: "relative" }}>
         <div onClick={clicked}>
-          <ReactPDF url={pdfUrl} showProgressBar showToolbox />
+          <PdfScroll url={pdfUrl} />
+          {/* <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+            <Page pageNumber={pageNumber} />
+          </Document> */}
         </div>
-
-        <br />
       </div>
 
       <br />
@@ -190,4 +192,5 @@ const LessonSection = () => {
     </div>
   );
 };
+
 export default LessonSection;
