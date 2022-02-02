@@ -79,35 +79,6 @@ const PdfScroll = (props) => {
     template.innerHTML = html;
     return template.content.firstChild;
   }
-  useEffect(() => {
-    return;
-    var spans = document.getElementsByTagName("span");
-    for (let i = 0; i < spans.length; i++) {
-      let html = `
-      <svg
-   id="play-icon"
-   version="1.1"
-   height="5%"
-   width="5%"
-   viewBox="0 0 1200 1200">
-  <path
-     d="M 600,1200 C 268.65,1200 0,931.35 0,600 0,268.65 268.65,0 600,0 c 331.35,0 600,268.65 600,600 0,331.35 -268.65,600 -600,600 z M 450,300.45 450,899.55 900,600 450,300.45 z"
-     id="path16995" />
-</svg>
-`;
-      const node = document.createElement("button");
-      node.innerText = "بخوان";
-
-      // Append the "li" node to the list:
-      if (spans[i].children.length === 0 && spans[i].innerText.length > 3) {
-        spans[i].appendChild(node);
-        node.onclick = function () {
-          speak(spans[i].innerText.replace("بخوان", ""));
-          // alert(spans[i].innerText);
-        };
-      }
-    }
-  });
 
   const [allPageNumbers, setAllPageNumbers] = React.useState<number[]>(); // default value is undefined.
 
@@ -128,31 +99,31 @@ const PdfScroll = (props) => {
     // just for fun
     setOuterWidth(document.getElementById("pdf-container").offsetWidth);
 
-    var spans = document.getElementsByTagName("span");
-    for (let i = 0; i < spans.length; i++) {
-      let html = `
-      <svg
-   id="play-icon"
-   version="1.1"
-   height="5%"
-   width="5%"
-   viewBox="0 0 1200 1200">
-  <path
-     d="M 600,1200 C 268.65,1200 0,931.35 0,600 0,268.65 268.65,0 600,0 c 331.35,0 600,268.65 600,600 0,331.35 -268.65,600 -600,600 z M 450,300.45 450,899.55 900,600 450,300.45 z"
-     id="path16995" />
-</svg>
-`;
-      const node = document.createElement("button");
-      node.innerText = "بخوان";
+    //     var spans = document.getElementsByTagName("span");
+    //     for (let i = 0; i < spans.length; i++) {
+    //       let html = `
+    //       <svg
+    //    id="play-icon"
+    //    version="1.1"
+    //    height="5%"
+    //    width="5%"
+    //    viewBox="0 0 1200 1200">
+    //   <path
+    //      d="M 600,1200 C 268.65,1200 0,931.35 0,600 0,268.65 268.65,0 600,0 c 331.35,0 600,268.65 600,600 0,331.35 -268.65,600 -600,600 z M 450,300.45 450,899.55 900,600 450,300.45 z"
+    //      id="path16995" />
+    // </svg>
+    // `;
+    //       const node = document.createElement("button");
+    //       node.innerText = "بخوان";
 
-      // Append the "li" node to the list:
-      if (spans[i].children.length === 0 && spans[i].innerText.length > 3) {
-        spans[i].appendChild(node);
-        node.onclick = function () {
-          speak(spans[i].innerText);
-        };
-      }
-    }
+    //       // Append the "li" node to the list:
+    //       if (spans[i].children.length === 0 && spans[i].innerText.length > 3) {
+    //         spans[i].appendChild(node);
+    //         node.onclick = function () {
+    //           speak(spans[i].innerText);
+    //         };
+    //       }
+    //     }
   }
 
   /** Finally, since you have all the page numbers in state,

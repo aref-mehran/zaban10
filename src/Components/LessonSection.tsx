@@ -129,10 +129,7 @@ const LessonSection = () => {
     }
   };
   return (
-    <div className="LessonSection">
-      <br />
-      <br />
-
+    <div className="LessonSection" style={{ overflowY: "hidden" }}>
       <div style={{ height: "70vh", position: "relative" }}>
         <div onClick={clicked}>
           <PdfScroll
@@ -157,15 +154,18 @@ const LessonSection = () => {
       </div>
 
       <Grid container style={{ marginLeft: "10%", height: "10vh" }}>
-        <Grid item xs={8}>
-          <Typography variant="h6" id="rate-slider" gutterBottom>
+        <Grid item xs={4}>
+          {/* <Typography variant="h6" id="rate-slider" gutterBottom>
             سرعت پخش
-          </Typography>
+          </Typography> */}
 
           <Slider
             aria-label="rate-slider"
             defaultValue={rate * 100}
             valueLabelDisplay="auto"
+            valueLabelFormat={() => {
+              return rate * 100 + " سرعت پخش";
+            }}
             step={10}
             marks
             min={10}
@@ -177,10 +177,24 @@ const LessonSection = () => {
           />
         </Grid>
 
+        {/* <Grid item xs={4}>
+          <NativeSelect
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            value={mode}
+            onChange={(e) => {
+              setMode(Number(e.target.value));
+            }}
+          >
+            <option value={1}>سرعت خیلی زیاد</option>
+            <option value={1}>سرعت زیاد</option>
+            <option value={1}>سرعت متوسط</option>
+            <option value={1}>سرعت پایین</option>
+            <option value={1}>سرعت خیلی پایین</option>
+          </NativeSelect>
+        </Grid> */}
+
         <Grid item xs={4}>
-          <InputLabel id="demo-simple-select-standard-label">
-            حالت تلفظ
-          </InputLabel>
           <NativeSelect
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
