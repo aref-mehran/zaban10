@@ -100,6 +100,7 @@ const LessonSection = () => {
     res = res.trim();
     speak(res);
     setSelected(res);
+    setSelected_fa(res);
 
     // let arr_en = content.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
     // let arr_fa = content_fa.replace(/([.?!])\s*(?=)/g, "$1|").split("|");
@@ -132,9 +133,13 @@ const LessonSection = () => {
       <br />
       <br />
 
-      <div style={{ height: "70vh", width: "100vh", position: "relative" }}>
+      <div style={{ height: "70vh", position: "relative" }}>
         <div onClick={clicked}>
-          <PdfScroll url={pdfUrl} />
+          <PdfScroll
+            style={{ height: "70vh" }}
+            url={pdfUrl}
+            maxHeightPercent={70}
+          />
           {/* <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} />
           </Document> */}

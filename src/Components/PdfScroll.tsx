@@ -80,6 +80,54 @@ const PdfScroll = (props) => {
     return template.content.firstChild;
   }
   useEffect(() => {
+    return;
+    var spans = document.getElementsByTagName("span");
+    for (let i = 0; i < spans.length; i++) {
+      let html = `
+      <svg
+   id="play-icon"
+   version="1.1"
+   height="5%"
+   width="5%"
+   viewBox="0 0 1200 1200">
+  <path
+     d="M 600,1200 C 268.65,1200 0,931.35 0,600 0,268.65 268.65,0 600,0 c 331.35,0 600,268.65 600,600 0,331.35 -268.65,600 -600,600 z M 450,300.45 450,899.55 900,600 450,300.45 z"
+     id="path16995" />
+</svg>
+`;
+      const node = document.createElement("button");
+      node.innerText = "بخوان";
+
+      // Append the "li" node to the list:
+      if (spans[i].children.length === 0 && spans[i].innerText.length > 3) {
+        spans[i].appendChild(node);
+        node.onclick = function () {
+          speak(spans[i].innerText.replace("بخوان", ""));
+          // alert(spans[i].innerText);
+        };
+      }
+    }
+  });
+
+  const [allPageNumbers, setAllPageNumbers] = React.useState<number[]>(); // default value is undefined.
+
+  // These are just for fun ;)
+  const [outerWidth, setOuterWidth] = React.useState<number>();
+  const CONTAINER_PADDING = 0;
+
+  /** 2. Then, write the function: */
+
+  // Document's onLoadSuccess function returns a PDFDocumentProxy type
+  function onDocumentLoadSuccess(pdf: PDFDocumentProxy) {
+    const allPageNumbers: number[] = []; // array of numbers
+    for (let p = 1; p < pdf.numPages + 1; p++) {
+      allPageNumbers.push(p);
+    }
+    setAllPageNumbers(allPageNumbers);
+
+    // just for fun
+    setOuterWidth(document.getElementById("pdf-container").offsetWidth);
+
     var spans = document.getElementsByTagName("span");
     for (let i = 0; i < spans.length; i++) {
       let html = `
@@ -105,27 +153,6 @@ const PdfScroll = (props) => {
         };
       }
     }
-  }, []);
-
-  const [allPageNumbers, setAllPageNumbers] = React.useState<number[]>(); // default value is undefined.
-  const PAGE_MAX_HEIGHT = 600; // maxHeight for scroll
-
-  // These are just for fun ;)
-  const [outerWidth, setOuterWidth] = React.useState<number>();
-  const CONTAINER_PADDING = 0;
-
-  /** 2. Then, write the function: */
-
-  // Document's onLoadSuccess function returns a PDFDocumentProxy type
-  function onDocumentLoadSuccess(pdf: PDFDocumentProxy) {
-    const allPageNumbers: number[] = []; // array of numbers
-    for (let p = 1; p < pdf.numPages + 1; p++) {
-      allPageNumbers.push(p);
-    }
-    setAllPageNumbers(allPageNumbers);
-
-    // just for fun
-    setOuterWidth(document.getElementById("pdf-container").offsetWidth);
   }
 
   /** Finally, since you have all the page numbers in state,
@@ -151,7 +178,7 @@ const PdfScroll = (props) => {
       >
         <div
           style={{
-            maxHeight: `${PAGE_MAX_HEIGHT}px`, // needed for scroll
+            maxHeight: `${props.maxHeightPercent}vh`, // needed for scroll
             overflowY: "scroll", // yes vertical scroll
             overflowX: "hidden", // no horizontal scroll
 
@@ -166,6 +193,7 @@ const PdfScroll = (props) => {
                   key={`page-${pn}`}
                   width={window.outerWidth}
                   pageNumber={pn}
+                  scale={1.3}
                 /> // 'width' is just for fun.
               ))
             : undefined}
