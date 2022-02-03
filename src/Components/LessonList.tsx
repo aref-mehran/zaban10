@@ -21,9 +21,12 @@ const LessonList = () => {
           <>
             {/* <Divider variant="inset" component="li" /> */}
             <ListItem alignItems="flex-start">
-              <Link to="/sections" state={lesson}>
+              <Link to="/lesson" state={lesson}>
                 <ListItemAvatar>
-                  <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                  <Avatar
+                    alt="Cindy Baker"
+                    src={"./images/lesson" + (idx + 1) + ".png"}
+                  />
                 </ListItemAvatar>
                 <ListItemText primary={lesson.title} />
               </Link>

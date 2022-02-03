@@ -10,17 +10,15 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LessonSection from "./Components/LessonSection";
+import Lesson from "./Components/Lesson";
 import LessonList from "./Components/LessonList";
-import SectionList from "./Components/SectionList";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/list" element={<LessonList />} />
-        <Route path="/sections" element={<SectionList />} />
-        <Route path="/section" element={<LessonSection />} />
+        <Route path="/lesson" element={<Lesson />} />
       </Routes>
 
       <Paper

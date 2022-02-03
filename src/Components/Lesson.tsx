@@ -17,10 +17,11 @@ import PdfScroll from "./PdfScroll";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import pdfUrl from "../assets/zaban10-lesson3.pdf";
+import pdfUrl from "../assets/lesson3.pdf";
 
-const LessonSection = () => {
+const Lesson = () => {
   let location = useLocation();
+  const pdfUrl = location.state.pdfUrl;
 
   // const content = location.state.content;
   // const content_fa = location.state.content_fa;
@@ -200,4 +201,4 @@ const LessonSection = () => {
   );
 };
 
-export default LessonSection;
+export default Lesson;
