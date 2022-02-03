@@ -164,7 +164,7 @@ const PdfScroll = (props) => {
                   key={`page-${pn}`}
                   width={window.outerWidth}
                   pageNumber={pn}
-                  scale={1.3}
+                  scale={1}
                 /> // 'width' is just for fun.
               ))
             : undefined}

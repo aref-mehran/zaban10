@@ -130,6 +130,15 @@ const LessonSection = () => {
   };
   return (
     <div className="LessonSection" style={{ overflowY: "hidden" }}>
+      <div
+        style={{
+          color: "green",
+          fontWeight: "bold"
+        }}
+      >
+        {selected_fa}
+      </div>
+      <br />
       <div style={{ height: "70vh", position: "relative" }}>
         <div onClick={clicked}>
           <PdfScroll
@@ -141,16 +150,6 @@ const LessonSection = () => {
             <Page pageNumber={pageNumber} />
           </Document> */}
         </div>
-      </div>
-
-      <br />
-      <div
-        style={{
-          color: "green",
-          fontWeight: "bold"
-        }}
-      >
-        {selected_fa}
       </div>
 
       <Grid container style={{ marginLeft: "10%", height: "10vh" }}>
