@@ -102,9 +102,10 @@ const LessonSection = () => {
     res = res.trim();
     speak(res);
     setSelected(res);
+    setSelected_fa("");
     var index = 0;
     for (el of gState.lessons[0].english) {
-      if (el.indexOf(res) != -1) {
+      if (el.indexOf(res) != -1 && res.length / el.length > 0.7) {
         var farsi = gState.lessons[0].farsi[index];
         setSelected_fa(farsi);
         break;
@@ -137,23 +138,11 @@ const LessonSection = () => {
         style={{
           color: "green",
           fontWeight: "bold",
-          textAlign: "center"
+          textAlign: "center",
+          direction: "rtl"
         }}
       >
         {selected_fa}
-      </div>
-      <br />
-      <div style={{ height: "70vh", position: "relative" }}>
-        <div onClick={clicked}>
-          <PdfScroll
-            style={{ height: "70vh" }}
-            url={pdfUrl}
-            maxHeightPercent={70}
-          />
-          {/* <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
-            <Page pageNumber={pageNumber} />
-          </Document> */}
-        </div>
       </div>
 
       <Grid container style={{ marginLeft: "10%", height: "10vh" }}>
@@ -180,23 +169,6 @@ const LessonSection = () => {
           />
         </Grid>
 
-        {/* <Grid item xs={4}>
-          <NativeSelect
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            value={mode}
-            onChange={(e) => {
-              setMode(Number(e.target.value));
-            }}
-          >
-            <option value={1}>سرعت خیلی زیاد</option>
-            <option value={1}>سرعت زیاد</option>
-            <option value={1}>سرعت متوسط</option>
-            <option value={1}>سرعت پایین</option>
-            <option value={1}>سرعت خیلی پایین</option>
-          </NativeSelect>
-        </Grid> */}
-
         <Grid item xs={4}>
           <NativeSelect
             labelId="demo-simple-select-standard-label"
@@ -211,6 +183,19 @@ const LessonSection = () => {
           </NativeSelect>
         </Grid>
       </Grid>
+
+      <div style={{ height: "70vh", position: "relative" }}>
+        <div onClick={clicked}>
+          <PdfScroll
+            style={{ height: "70vh" }}
+            url={pdfUrl}
+            maxHeightPercent={70}
+          />
+          {/* <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+            <Page pageNumber={pageNumber} />
+          </Document> */}
+        </div>
+      </div>
     </div>
   );
 };
