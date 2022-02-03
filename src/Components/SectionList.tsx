@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import { Link, useLocation } from "react-router-dom";
 
 const SectionList = () => {
-  const gSate = useSelector((state) => state);
+  const gState = useSelector((state) => state);
 
   let location = useLocation();
 

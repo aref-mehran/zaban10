@@ -11,12 +11,12 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 const LessonList = () => {
-  const gSate = useSelector((state) => state);
+  const gState = useSelector((state) => state);
   const dispatch = useDispatch();
 
   return (
     <List>
-      {gSate.lessons.map((lesson, idx) => {
+      {gState.lessons.map((lesson, idx) => {
         return (
           <>
             {/* <Divider variant="inset" component="li" /> */}

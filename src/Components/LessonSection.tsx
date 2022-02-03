@@ -32,6 +32,8 @@ const LessonSection = () => {
 
   const [mode, setMode] = useState(1);
 
+  const gState = useSelector((state) => state);
+
   const firstOfflineVoice = speechSynthesis.getVoices().filter((el) => {
     return el.localService == true;
   })[0]?.name;
@@ -100,14 +102,15 @@ const LessonSection = () => {
     res = res.trim();
     speak(res);
     setSelected(res);
-    setSelected_fa(res);
-
-    // let arr_en = content.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
-    // let arr_fa = content_fa.replace(/([.?!])\s*(?=)/g, "$1|").split("|");
-
-    // let index = arr_en.indexOf(res);
-    // let selected_fa = arr_fa[index];
-    // setSelected_fa(selected_fa);
+    var index = 0;
+    for (el of gState.lessons[0].english) {
+      if (el.indexOf(res) != -1) {
+        var farsi = gState.lessons[0].farsi[index];
+        setSelected_fa(farsi);
+        break;
+      }
+      index++;
+    }
   };
 
   const click_on_word = () => {
@@ -133,7 +136,8 @@ const LessonSection = () => {
       <div
         style={{
           color: "green",
-          fontWeight: "bold"
+          fontWeight: "bold",
+          textAlign: "center"
         }}
       >
         {selected_fa}
