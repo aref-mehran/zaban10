@@ -2,7 +2,7 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
 import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import ListIcon from "@mui/icons-material/List";
 import ArchiveIcon from "@mui/icons-material/Archive";
 
 import Paper from "@mui/material/Paper";
@@ -31,11 +31,11 @@ export default function App() {
       >
         <BottomNavigation showLabels>
           <Link to="/list">
-            <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          </Link>
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <Link to="/sections">
-            <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+            <BottomNavigationAction
+              label="Favorites"
+              icon={<ListIcon />}
+            ></BottomNavigationAction>
+            دروس
           </Link>
         </BottomNavigation>
       </Paper>
