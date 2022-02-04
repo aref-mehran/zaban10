@@ -10,10 +10,8 @@ const store = createStore(lessonReducer);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   rootElement
 );
