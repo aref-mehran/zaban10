@@ -1,3 +1,4 @@
+//@ts-ignore//@ts-ignore
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
