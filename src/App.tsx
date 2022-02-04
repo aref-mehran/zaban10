@@ -1,9 +1,7 @@
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
-import RestoreIcon from "@mui/icons-material/Restore";
 import ListIcon from "@mui/icons-material/List";
-import ArchiveIcon from "@mui/icons-material/Archive";
 
 import Paper from "@mui/material/Paper";
 
@@ -17,7 +15,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/list" element={<LessonList />} />
+        <Route path="/list" element={<LessonList />} />
         <Route path="/lesson" element={<Lesson />} />
       </Routes>
 

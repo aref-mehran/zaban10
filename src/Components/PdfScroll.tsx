@@ -1,3 +1,4 @@
+//@ts-ignore
 import React, { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { PDFDocumentProxy } from "pdfjs-dist/types/src/display/api";

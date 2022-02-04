@@ -1,11 +1,10 @@
+//@ts-ignore
 import { useSelector, useDispatch } from "react-redux";
 
 import Speech from "speak-tts";
 
-import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 
-import InputLabel from "@mui/material/InputLabel";
 import NativeSelect from "@mui/material/NativeSelect";
 
 import Grid from "@mui/material/Grid";
@@ -16,8 +15,6 @@ import PdfScroll from "./PdfScroll";
 
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-
-import pdfUrl from "../assets/lesson3.pdf";
 
 const Lesson = () => {
   let location = useLocation();
