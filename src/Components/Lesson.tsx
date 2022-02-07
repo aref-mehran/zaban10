@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 
 import "../styles.css";
 
-import PdfScroll from "./PdfScroll";
+import PdfScroll from "./PdfScroll.tsx";
 
 import { useState } from "react";
 import { useLocation } from "react-router-dom";

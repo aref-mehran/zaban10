@@ -9,8 +9,8 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Lesson from "./Components/Lesson";
-import LessonList from "./Components/LessonList";
+import Lesson from "./Components/Lesson.tsx";
+import LessonList from "./Components/LessonList.tsx";
 
 export default function App() {
   return (
