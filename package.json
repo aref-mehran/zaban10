@@ -28,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "add:android": "npm install -g @ionic/cli;npm install @capacitor/core --save;ionic capacitor add android;",
+    "build:apk": "ionic capacitor sync;cd android && ./gradlew assembleDebug && cd .."
   },
   "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }
