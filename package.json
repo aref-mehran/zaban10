@@ -4,6 +4,7 @@
   "description": "React example starter project",
   "keywords": ["react", "starter"],
   "main": "src/index.js",
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
@@ -22,7 +23,11 @@
   },
   "devDependencies": {
     "@babel/runtime": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "cordova-android": "^10.1.1"
+  },
+  "cordova": {
+    "platforms": ["android"]
   },
   "scripts": {
     "start": "react-scripts start",
