@@ -4,6 +4,7 @@
   "description": "React example starter project",
   "keywords": ["react", "starter"],
   "main": "src/index.js",
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
