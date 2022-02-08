@@ -8,13 +8,13 @@ import Paper from "@mui/material/Paper";
 
 import { Link } from "react-router-dom";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Lesson from "./Components/Lesson.tsx";
 import LessonList from "./Components/LessonList.tsx";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/list" element={<LessonList />} />
         <Route path="/lesson" element={<Lesson />} />
@@ -38,6 +38,6 @@ export default function App() {
           </Link>
         </BottomNavigation>
       </Paper>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
