@@ -7,6 +7,8 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 import Speech from "speak-tts";
 
+import LinearProgressWithLabel from "./LinearProgressWithLabel";
+
 const PdfScroll = (props) => {
   /** 1. Set a state variable at the top-level of your application: */
 
@@ -85,6 +87,8 @@ const PdfScroll = (props) => {
 
   // These are just for fun ;)
   const [outerWidth, setOuterWidth] = React.useState<number>();
+  const [downloadProgress, setDownloadProgress] = React.useState<number>(0);
+
   const CONTAINER_PADDING = 0;
 
   /** 2. Then, write the function: */
@@ -147,6 +151,15 @@ const PdfScroll = (props) => {
       <Document
         file={props.url} // example PDF file located in '/public/assets/docs/*'
         onLoadSuccess={onDocumentLoadSuccess}
+        onLoadProgress={({ loaded, total }) => {
+          setDownloadProgress((loaded / total) * 100);
+        }}
+        loading={
+          <div style={{ width: "90vw" }}>
+            در حال دانلود ...
+            <LinearProgressWithLabel value={downloadProgress} />
+          </div>
+        }
       >
         <div
           style={{
