@@ -14,7 +14,7 @@ import LessonList from "./Components/LessonList.tsx";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/zaban10/build">
       <Routes>
         <Route path="/list" element={<LessonList />} />
         <Route path="/lesson" element={<Lesson />} />
