@@ -19,7 +19,7 @@ import LessonList from "./Components/LessonList.tsx";
 
 export default function App() {
     if ('serviceWorker' in navigator) {
-        const wb = new Workbox('%PUBLIC_URL%/sw.js');
+        const wb = new Workbox(location.href+'/sw.js');
 
         wb.addEventListener("waiting", event => {
             window.location.reload();

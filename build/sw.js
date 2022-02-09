@@ -10,7 +10,7 @@ suffix: 'v1'
 workbox.precaching.precacheAndRoute([
   {
     "url": "asset-manifest.json",
-    "revision": "55897c7b04429303e44e9add8c73122a"
+    "revision": "af48ac0d276ae98b86fff3c5e3791659"
   },
   {
     "url": "images/lesson1.png",
@@ -30,7 +30,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "index.html",
-    "revision": "b5bd3b31980f3095ba3764c3e023a7de"
+    "revision": "90706884500eecb292c50832dbec0489"
   },
   {
     "url": "logo192.png",
@@ -49,11 +49,11 @@ workbox.precaching.precacheAndRoute([
     "revision": "01ed564af93e37132875dedb26a76e31"
   },
   {
-    "url": "static/js/main.d1d07467.js",
-    "revision": "b510869bb7b9d83d89405c9ce916f2f8"
+    "url": "static/js/main.db7577b1.js",
+    "revision": "9c5105e6d03883c89230d5a4e1d11601"
   },
   {
-    "url": "static/js/main.d1d07467.js.LICENSE.txt",
+    "url": "static/js/main.db7577b1.js.LICENSE.txt",
     "revision": "d2f7bb98f025f0e7c5855f79146fc17d"
   }
 ]);

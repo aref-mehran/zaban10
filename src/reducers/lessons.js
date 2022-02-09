@@ -1,10 +1,10 @@
 import zaban10_en from "../assets/zaban10_en.js";
 import zaban10_fa from "../assets/zaban10_fa.js";
 
-import pdfUrl1 from "../assets/lesson1.pdf";
-import pdfUrl2 from "../assets/lesson2.pdf";
-import pdfUrl3 from "../assets/lesson3.pdf";
-import pdfUrl4 from "../assets/lesson4.pdf";
+const pdfUrl1= "./pdfs/lesson1.pdf";
+const pdfUrl2= "./pdfs/lesson2.pdf";
+const pdfUrl3= "./pdfs/lesson3.pdf";
+const pdfUrl4= "./pdfs/lesson4.pdf";
 
 const initilaSate = {
   lessons: [

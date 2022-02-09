@@ -1,17 +1,13 @@
 {
   "files": {
     "main.css": "/zaban10/build/static/css/main.350d7298.css",
-    "main.js": "/zaban10/build/static/js/main.d1d07467.js",
-    "static/media/lesson1.pdf": "/zaban10/build/static/media/lesson1.37ef2fa3f9667b374a7e.pdf",
-    "static/media/lesson2.pdf": "/zaban10/build/static/media/lesson2.aba8ba4cd12166b5c44e.pdf",
-    "static/media/lesson4.pdf": "/zaban10/build/static/media/lesson4.ae381d5f634fbe3134fc.pdf",
-    "static/media/lesson3.pdf": "/zaban10/build/static/media/lesson3.717e90813b75e23e099d.pdf",
+    "main.js": "/zaban10/build/static/js/main.db7577b1.js",
     "index.html": "/zaban10/build/index.html",
     "main.350d7298.css.map": "/zaban10/build/static/css/main.350d7298.css.map",
-    "main.d1d07467.js.map": "/zaban10/build/static/js/main.d1d07467.js.map"
+    "main.db7577b1.js.map": "/zaban10/build/static/js/main.db7577b1.js.map"
   },
   "entrypoints": [
     "static/css/main.350d7298.css",
-    "static/js/main.d1d07467.js"
+    "static/js/main.db7577b1.js"
   ]
 }
