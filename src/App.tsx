@@ -9,10 +9,26 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import {Workbox} from 'workbox-window';
+
+
+
 import Lesson from "./Components/Lesson.tsx";
 import LessonList from "./Components/LessonList.tsx";
 
 export default function App() {
+    if ('serviceWorker' in navigator) {
+        const wb = new Workbox('/sw.js');
+
+        wb.addEventListener("waiting", event => {
+            window.location.reload();
+            wb.messageSW({type: "SKIP_WAITING"});
+        });
+        wb.register();
+    }
+
+
   return (
     <BrowserRouter
       basename={process.env.NODE_ENV === "development" ? "/" : "/zaban10/build"}

@@ -1,35 +1,46 @@
 {
-  "name": "react",
-  "version": "1.0.0",
-  "description": "React example starter project",
-  "keywords": ["react", "starter"],
-  "main": "src/index.js",
-  "homepage": "https://aref-mehran.github.io/zaban10/build/",
-  "dependencies": {
-    "@emotion/react": "11.7.1",
-    "@emotion/styled": "11.6.0",
-    "@mui/icons-material": "5.3.1",
-    "@mui/material": "5.4.0",
-    "babel-runtime": "6.26.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-highlight-words": "0.17.0",
-    "react-pdf": "5.7.0",
-    "react-redux": "7.2.6",
-    "react-router-dom": "6.2.1",
-    "react-scripts": "5.0.0",
-    "redux": "4.1.2",
-    "speak-tts": "2.0.8"
-  },
-  "devDependencies": {
-    "@babel/runtime": "latest",
-    "typescript": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+    "name": "react",
+    "version": "1.0.0",
+    "description": "React example starter project",
+    "keywords": [
+        "react",
+        "starter"
+    ],
+    "main": "src/index.js",
+    "homepage": "https://aref-mehran.github.io/zaban10/build/",
+    "dependencies": {
+        "@emotion/react": "11.7.1",
+        "@emotion/styled": "11.6.0",
+        "@mui/icons-material": "5.3.1",
+        "@mui/material": "5.4.0",
+        "babel-runtime": "6.26.0",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-highlight-words": "0.17.0",
+        "react-pdf": "5.7.0",
+        "react-redux": "7.2.6",
+        "react-router-dom": "6.2.1",
+        "react-scripts": "5.0.0",
+        "redux": "4.1.2",
+        "speak-tts": "2.0.8",
+        "workbox-window": "^6.4.2"
+    },
+    "devDependencies": {
+        "@babel/runtime": "latest",
+        "typescript": "latest"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject",
+        "build": "CI=false TSC_COMPILE_ON_ERROR=false react-scripts build && workbox injectManifest workbox-config.js && npm run clean-cra-sw",
+        "clean-cra-sw": "rm -f build/precache-manifest.*.js && rm -f build/service-worker.js",
+        "start-sw-build": "react-scripts build && workbox injectManifest workbox-config.js && npm run clean-cra-sw && serve -s build"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
 }

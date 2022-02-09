@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
+
 import App from "./App.tsx";
 import lessonReducer from "./reducers/lessons";
 const store = createStore(lessonReducer);
@@ -15,3 +16,5 @@ ReactDOM.render(
   </Provider>,
   rootElement
 );
+
+
