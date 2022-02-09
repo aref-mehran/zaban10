@@ -4,7 +4,7 @@
   "description": "React example starter project",
   "keywords": ["react", "starter"],
   "main": "src/index.js",
-  "homepage": "./",
+  "homepage": "https://aref-mehran.github.io/zaban10/build/",
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
