@@ -102,7 +102,7 @@ const Lesson = () => {
     setSelected(res);
     setSelected_fa("");
     var index = 0;
-    for (el of gState.lessons[0].english) {
+    for (let el of gState.lessons[0].english) {
       if (el.indexOf(res) != -1 && res.length / el.length > 0.7) {
         var farsi = gState.lessons[0].farsi[index];
         setSelected_fa(farsi);
