@@ -7,7 +7,7 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 import Speech from "speak-tts";
 
-import LinearProgressWithLabel from "./LinearProgressWithLabel";
+import LinearProgressWithLabel from "./LinearProgressWithLabel.tsx";
 
 const PdfScroll = (props) => {
   /** 1. Set a state variable at the top-level of your application: */
