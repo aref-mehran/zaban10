@@ -19,7 +19,7 @@ import LessonList from "./Components/LessonList.tsx";
 
 export default function App() {
     if ('serviceWorker' in navigator) {
-        const wb = new Workbox('/sw.js');
+        const wb = new Workbox('https://aref-mehran.github.io/zaban10/build/sw.js');
 
         wb.addEventListener("waiting", event => {
             window.location.reload();
